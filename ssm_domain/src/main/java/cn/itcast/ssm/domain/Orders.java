@@ -1,5 +1,8 @@
 package cn.itcast.ssm.domain;
 
+import cn.itcast.ssm.utils.DateUtils;
+
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +15,7 @@ public class Orders {
     private Date orderTime;//下单时间
     private String orderTimeStr;//
     private int orderStatus;//订单状态(0 未支付 1 已支付)
+    private String orderStatusStr;
     private int peopleCount;//出行人数
     private Product product;//
     private List<Traveller> travellers;//
@@ -19,6 +23,19 @@ public class Orders {
     private Integer payType;//支付方式(0 支付宝 1 微信 2其它)
     private String payTypeStr;//
     private String orderDesc;//订单描述(其它信息)
+
+    public String getOrderStatusStr() {
+        if (orderStatus == 0) {
+            orderStatusStr = "未支付";
+        } else if (orderStatus == 1) {
+            orderStatusStr = "已支付";
+        }
+        return orderStatusStr;
+    }
+
+    public void setOrderStatusStr(String orderStatusStr) {
+        this.orderStatusStr = orderStatusStr;
+    }
 
     public String getId() {
         return id;
@@ -37,6 +54,7 @@ public class Orders {
     }
 
     public Date getOrderTime() {
+
         return orderTime;
     }
 
@@ -45,10 +63,14 @@ public class Orders {
     }
 
     public String getOrderTimeStr() {
+        if (orderTime != null) {
+            orderTimeStr = DateUtils.date2Str(orderTime, "yyyy-MM-dd HH:mm:ss");
+        }
         return orderTimeStr;
     }
 
-    public void setOrderTimeStr(String orderTimeStr) {
+    public void setOrderTimeStr(String orderTimeStr) throws ParseException {
+
         this.orderTimeStr = orderTimeStr;
     }
 
@@ -101,6 +123,14 @@ public class Orders {
     }
 
     public String getPayTypeStr() {
+        //支付方式(0 支付宝 1 微信 2其它)
+            if(payType == 0){
+                payTypeStr = "支付宝";
+            }else if(payType == 1){
+                payTypeStr = "微信";
+            }else if(payType == 2){
+                payTypeStr = "其他";
+            }
         return payTypeStr;
     }
 
@@ -114,5 +144,24 @@ public class Orders {
 
     public void setOrderDesc(String orderDesc) {
         this.orderDesc = orderDesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id='" + id + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", orderTime=" + orderTime +
+                ", orderTimeStr='" + orderTimeStr + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderStatusStr='" + orderStatusStr + '\'' +
+                ", peopleCount=" + peopleCount +
+                ", product=" + product +
+                ", travellers=" + travellers +
+                ", member=" + member +
+                ", payType=" + payType +
+                ", payTypeStr='" + payTypeStr + '\'' +
+                ", orderDesc='" + orderDesc + '\'' +
+                '}';
     }
 }

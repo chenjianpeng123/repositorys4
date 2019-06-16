@@ -9,4 +9,5 @@ public interface ProductMapper {
     public List<Product> findAll() throws Exception;
     //添加
     public void save(Product product) throws Exception;
+
 }

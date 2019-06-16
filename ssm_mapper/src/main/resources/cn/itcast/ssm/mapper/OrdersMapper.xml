@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.ssm.mapper.OrdersMapper">
+    <!--查询订单-->
+    <resultMap id="ordersMap" type="cn.itcast.ssm.domain.Orders">
+        <result column="id" property="id"/>
+        <result column="orderNum" property="orderNum"/>
+        <result column="orderTime" property="orderTime"/>
+        <result column="orderStatus" property="orderStatus"/>
+        <result column="peopleCount" property="peopleCount"/>
+        <result column="payType" property="payType"/>
+        <result column="orderDesc" property="orderDesc"/>
+        <association property="product" javaType="cn.itcast.ssm.domain.Product">
+            <result column="pid" property="id"/>
+            <result property="productNum" column="productNum"/>
+            <result property="productName" column="productName"/>
+            <result property="cityName" column="cityName"/>
+            <result property="departureTime" column="departureTime"/>
+            <result property="productPrice" column="productPrice"/>
+            <result property="productDesc" column="productDesc"/>
+            <result property="productStatus" column="productStatus"/>
+        </association>
+    </resultMap>
+  <select id="findAll" resultMap="ordersMap">
+      select o.id,o.orderNum,p.productName,p.productPrice,o.orderTime,o.orderStatus from orders o, product p where o.productId=p.id
+  </select>
+    <!--查询订单详情-->
+    <resultMap id="ordersMapper" type="cn.itcast.ssm.domain.Orders">
+
+    </resultMap>
+   <select id="findById" resultMap="ordersMapper">
+
+   </select>
+
+</mapper>
