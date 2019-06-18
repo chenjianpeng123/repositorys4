@@ -23,7 +23,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public Orders findById(String id) throws Exception {
-        return ordersMapper.findById(id);
+    public Orders findById(String ordersId) throws Exception {
+        return ordersMapper.findById(ordersId);
     }
 }

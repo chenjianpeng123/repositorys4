@@ -10,4 +10,6 @@ public interface ProductMapper {
     //添加
     public void save(Product product) throws Exception;
 
+    public Product findById(String id) throws Exception;
+
 }

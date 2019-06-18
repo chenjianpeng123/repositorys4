@@ -24,12 +24,5 @@
   <select id="findAll" resultMap="ordersMap">
       select o.id,o.orderNum,p.productName,p.productPrice,o.orderTime,o.orderStatus from orders o, product p where o.productId=p.id
   </select>
-    <!--查询订单详情-->
-    <resultMap id="ordersMapper" type="cn.itcast.ssm.domain.Orders">
-
-    </resultMap>
-   <select id="findById" resultMap="ordersMapper">
-
-   </select>
 
 </mapper>

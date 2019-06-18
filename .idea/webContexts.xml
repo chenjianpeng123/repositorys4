@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages/all-admin-index.html" value="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages" />
+        <entry key="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages/aside.jsp" value="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages" />
         <entry key="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages/product-list.jsp" value="file://$PROJECT_DIR$/ssm_web/src/main/webapp/pages" />
       </map>
     </option>

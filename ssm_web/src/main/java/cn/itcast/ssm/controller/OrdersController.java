@@ -34,10 +34,19 @@ public class OrdersController {
        modelAndView.setViewName("orders-list");
        return modelAndView;
     }
+
+    /**
+     * 详情
+     * @param ordersId
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/findById")
-    public ModelAndView findById(@RequestParam(name = "id",required = true)String id) throws Exception {
+    public ModelAndView findById(@RequestParam(name = "id",required = true)String ordersId) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        Orders orders = ordersService.findById(id);
+        Orders orders = ordersService.findById(ordersId);
+        modelAndView.addObject("orders",orders);
+        modelAndView.setViewName("orders-show");
         return modelAndView;
     }
 }

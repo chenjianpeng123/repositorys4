@@ -7,5 +7,7 @@
     <insert id="save" parameterType="product">
       insert into product(productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus)values(#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})
    </insert>
-
+   <select id="findById" resultType="Product" parameterType="String">
+       select * from product where id = #{id}
+   </select>
 </mapper>

@@ -5,6 +5,6 @@
 </head>
 <body>
 <%--<a href="${pageContext.request.contextPath}/product/findAll"><b><i>查询所有数据</i></b></a>--%>
-<jsp:forward page="/pages/main.jsp"></jsp:forward>
+<jsp:forward page="/login.jsp"></jsp:forward>
 </body>
 </html>
