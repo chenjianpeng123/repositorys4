@@ -15,6 +15,7 @@
 			    http://www.springframework.org/schema/tx/spring-tx.xsd
 			    http://www.springframework.org/schema/mvc
 			    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--扫描组件-->
     <context:component-scan base-package="cn.itcast.ssm.controller"/>
     <!--配置mcv注解驱动-->

@@ -244,7 +244,7 @@
 								<tbody>
 
 
-									<c:forEach items="${productList}" var="product">
+									<c:forEach items="${pageInfo.list}" var="product">
  										<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>${product.id }</td>
@@ -254,7 +254,7 @@
 											<td>${product.departureTimeStr }</td>
 											<td class="text-center">${product.productPrice }</td>
 											<td>${product.productDesc }</td>
-											<td class="text-center">${product.productStatusStr }</td>
+											<td class="text-center">${product.productStatusStr}</td>
 											<td class="text-center">
 												<button type="button" class="btn bg-olive btn-xs">订单</button>
 												<button type="button" class="btn bg-olive btn-xs">详情</button>
@@ -318,7 +318,9 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共2 页，共14 条数据。 每页 <select class="form-control">
+								总共2 页，共14 条数据。 每页
+								<select id="changePageSize" class="form-control" onchange="changePageSize()">
+									<option>固定显示条数</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -330,15 +332,13 @@
 
 						<div class="box-tools pull-right">
 							<ul class="pagination">
-								<li><a href="#" aria-label="Previous">首页</a></li>
-								<li><a href="#">上一页</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">下一页</a></li>
-								<li><a href="#" aria-label="Next">尾页</a></li>
+								<li><a href="${pageContext.request.contextPath}/product/findAll?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
+								<li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
+								<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
+								<li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+								</c:forEach>
+								<li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum+1}&size=${pagInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
 							</ul>
 						</div>
 
@@ -458,6 +458,14 @@
 	<script
 		src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 	<script>
+		function changePageSize() {
+			//获取下拉框的值
+			var pageSize = $("#changePageSize").val();
+
+			//向服务器发送请求，改变没页显示条数
+			location.href = "${pageContext.request.contextPath}/product/findAll?page=1&size="
+					+ pageSize;
+		}
 		$(document).ready(function() {
 			// 选择框
 			$(".select2").select2();
