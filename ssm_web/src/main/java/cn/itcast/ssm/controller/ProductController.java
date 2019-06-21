@@ -3,6 +3,7 @@ package cn.itcast.ssm.controller;
 import cn.itcast.ssm.domain.Product;
 import cn.itcast.ssm.service.ProductService;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class ProductController {
      */
     @RequestMapping("/findAll")
     @RolesAllowed("ADMIN")
-    public ModelAndView findAll(@RequestParam(name = "page", required = true,defaultValue = "1")int page,@RequestParam(name = "size",required = true,defaultValue = "5")int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true,defaultValue = "1")Integer page,@RequestParam(name = "size",required = true,defaultValue = "5")Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Product> ps = productService.findAll(page, size);
         PageInfo pageInfo = new PageInfo(ps);
