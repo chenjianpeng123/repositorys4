@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -26,6 +25,7 @@ public class LogAop {
 
     @Autowired
     private SysLogService sysLogService;
+
     private Date visitTime;//访问时间
     private Class executionClass;//访问的类
     private Method executionMethod;//访问的方法

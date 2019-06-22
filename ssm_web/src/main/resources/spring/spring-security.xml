@@ -13,6 +13,7 @@
     <!--<security:global-method-security jsr250-annotations="enabled"/>-->
     <!--开启secured注解-->
     <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
+
     <!--配置不拦截的资源-->
     <security:http pattern="/login.jsp" security="none"/>
     <security:http pattern="/failer.jsp" security="none"/>
